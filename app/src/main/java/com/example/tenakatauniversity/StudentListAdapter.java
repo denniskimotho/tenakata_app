@@ -42,10 +42,10 @@ public class StudentListAdapter extends ArrayAdapter<StudentItem> {
 
         tvName.setText(studentList.get(position).getName());
         genderTv.setText(studentList.get(position).getGender());
-        tvAge.setText(studentList.get(position).getAge());
-        tvScore.setText(studentList.get(position).getAdm_score());
+        tvAge.setText("Age: "+studentList.get(position).getAge());
+        tvScore.setText("Adm Score: "+studentList.get(position).getAdm_score());
         tvMarital_status.setText(studentList.get(position).getMarital_status());
-        tvIQ.setText(studentList.get(position).getIq());
+        tvIQ.setText("IQ: "+studentList.get(position).getIq());
         tvLocation.setText(studentList.get(position).getLocation());
 
         return view;

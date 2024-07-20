@@ -8,12 +8,12 @@ public class StudentItem {
     private int iq;
     private String marital_status;
     private String location;
-    private int adm_score;
+    private double adm_score;
     private String photo_url;
     public StudentItem(){
 
     };
-    public StudentItem(String name,String gender,String marital_status,int iq,String location,int adm_score,String photo_url,int age){
+    public StudentItem(String name,String gender,String marital_status,int iq,String location,double adm_score,String photo_url,int age){
         this.name = name;
         this.gender = gender;
         this.adm_score = adm_score;
@@ -51,7 +51,7 @@ public class StudentItem {
         return name;
     }
 
-    public int getAdm_score() {
+    public double getAdm_score() {
         return adm_score;
     }
 
