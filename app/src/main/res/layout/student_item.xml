@@ -12,6 +12,7 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent">
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
@@ -39,24 +40,23 @@
             android:paddingRight="16dp"
             android:paddingBottom="16dp">
             <TextView
-                android:id="@+id/textAmount"
+                android:id="@+id/tvScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$186"
-                android:textSize="14dp"
-                android:textStyle="bold"
+                android:text="Score 6"
+                android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
             <TextView
-                android:id="@+id/textTitle"
+                android:id="@+id/tvName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="This Account Card"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textAmount"
+                app:layout_constraintEnd_toStartOf="@+id/tvScore"
                 app:layout_constraintTop_toTopOf="parent"
                 />
             <androidx.appcompat.widget.AppCompatImageView
@@ -65,28 +65,62 @@
                 android:layout_height="12dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/ic_location_tracker"
-                app:layout_constraintStart_toStartOf="@+id/textTitle"
-                app:layout_constraintTop_toBottomOf="@+id/textTitle"
+                app:layout_constraintStart_toStartOf="@+id/tvName"
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
                 />
             <TextView
-                android:id="@+id/textLocation"
+                android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="North SylvanLand"
-                android:textSize="8dp"
+                android:textSize="9dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageLocation"
                 app:layout_constraintStart_toEndOf="@+id/imageLocation"
                 app:layout_constraintTop_toTopOf="@+id/imageLocation"
+                android:layout_margin="5dp"
                 />
             <TextView
-                android:id="@+id/textTime"
+                android:id="@+id/tvAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10am-06pm"
                 android:textSize="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textLocation"
-                app:layout_constraintStart_toEndOf="@+id/textLocation"
-                app:layout_constraintTop_toTopOf="@+id/textLocation"
+                app:layout_constraintBottom_toBottomOf="@+id/tvLocation"
+                app:layout_constraintStart_toEndOf="@+id/tvLocation"
+                app:layout_constraintTop_toTopOf="@+id/tvLocation"
+                android:layout_margin="5dp"
+                />
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:text="Gender"
+                android:textSize="10dp"
+                app:layout_constraintStart_toStartOf="@+id/imageLocation"
+                app:layout_constraintTop_toBottomOf="@+id/imageLocation"
+                />
+            <TextView
+                android:id="@+id/tvIQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textSize="9dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvGender"
+                app:layout_constraintStart_toEndOf="@+id/tvGender"
+                app:layout_constraintTop_toTopOf="@+id/tvGender"
+                android:layout_margin="5dp"
+                />
+            <TextView
+                android:id="@+id/tvMaritalStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Married"
+                android:textSize="9dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvIQ"
+                app:layout_constraintStart_toEndOf="@+id/tvIQ"
+                app:layout_constraintTop_toTopOf="@+id/tvIQ"
+                android:layout_margin="5dp"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
