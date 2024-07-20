@@ -2,9 +2,12 @@ package com.example.tenakatauniversity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     StudentListAdapter studentListAdapter;
     StudentItem studentItem;
     ListView studentListView;
+    Button btnAddStudent,btnPDF;
+    ProgressDialog pDialog;
     public static ArrayList< StudentItem>  studentArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +39,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         studentListView = findViewById(R.id.studentListView);
+        btnAddStudent = findViewById(R.id.btnAddStudent);
+        btnPDF = findViewById(R.id.btnPdf);
 
         studentListAdapter = new StudentListAdapter(this,studentArrayList);
         studentListView.setAdapter(studentListAdapter);
         studentListView.setClickable(true);
 
-        getStudent();
+        btnAddStudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,AddStudent.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,DownloadPdf.class);
+                startActivity(intent);
+            }
+        });
+        boolean isConnected = ConnectivityHelper.isConnectedToNetwork(this);
+        if (isConnected) {
+            getStudent();
+        } else {
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+
     }
     private void getStudent() {
 
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Loading ...");
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(false);
+        pDialog.show();
         RequestQueue queue = Volley.newRequestQueue(this);
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
@@ -51,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("TAG", "RESPONSE IS " + response);
 //                progressBar.setVisibility(View.GONE);
                 studentArrayList.clear();
+                pDialog.dismiss();
                 try{
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
@@ -89,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 // method to handle errors.
 //                progressBar.setVisibility(View.GONE);
+                pDialog.dismiss();
                 Toast.makeText(getApplicationContext(), "Fail to get response ", Toast.LENGTH_SHORT).show();
             }
         }) {
