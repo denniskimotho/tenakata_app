@@ -34,7 +34,7 @@ public class DownloadPdf extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     FloatingActionButton floatingActionButton;
-    String web_url = "https://mwalimubiashara.com/app/cashflow_download.php?email=denniskimotho222@gmail.com";
+    String web_url = "https://mwalimubiashara.com/tenakata/student_pdf.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
