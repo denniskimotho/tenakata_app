@@ -7,8 +7,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 <ImageView
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
     app:srcCompat="@drawable/tenakata_logo"
     android:layout_gravity="center_horizontal"
     />
@@ -17,7 +17,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_horizontal"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="2dp"
     >
 
     <Button

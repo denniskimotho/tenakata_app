@@ -43,8 +43,14 @@ public class DownloadPdf extends AppCompatActivity {
 
         pdfView = findViewById(R.id.pdfview);
         floatingActionButton = findViewById(R.id.floating_action_button_download);
+        boolean isConnected = ConnectivityHelper.isConnectedToNetwork(this);
+        if (isConnected) {
+            new DownloadPdf.Retrivepdf().execute(web_url);
+        } else {
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
 
-        new DownloadPdf.Retrivepdf().execute(web_url);
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,5 +22,210 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:textAllCaps="false"
         android:text="Take Photo" />
+    <LinearLayout
+        android:layout_below="@+id/button"
+        android:id="@+id/name_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="First Name"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_fname"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="Last Name"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_lname"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/name_layout"
+        android:id="@+id/iq_age_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="IQ"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_IQ"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="Age"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_age"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/iq_age_layout"
+        android:id="@+id/married_gender_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+       <Spinner
+           android:layout_width="160dp"
+           android:layout_height="50dp"
+           android:id="@+id/gender_sp"
+           android:layout_marginStart="10dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginEnd="10dp"
+           />
+        <Spinner
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:id="@+id/marital_status_sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/married_gender_layout"
+        android:id="@+id/location_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnGetLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Get GPS"
+            android:textAllCaps="false" />
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="Latitude"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_latitude"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:editable="false"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="Longitude"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_longitude"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:editable="false"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location_layout"
+        android:text="Country"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_below="@+id/tvCountry"
+        android:id="@+id/calculate_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCalScore"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:text="Get Admissibility Score"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/_11sdp"
+            android:layout_marginStart="50dp"
+            android:text="Admission Score: 0.0"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/calculate_layout"
+        android:id="@+id/button_layout"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:text="Add" />
+    </LinearLayout>
+
 </RelativeLayout>
