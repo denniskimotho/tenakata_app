@@ -173,15 +173,18 @@ public class AddStudent extends AppCompatActivity {
                 String str_iq = ed_iq.getText().toString();
                 String str_fname = ed_fname.getText().toString();
                 String str_lname = ed_lname.getText().toString();
+                String str_latitude = ed_latitude.getText().toString();
+                String str_longitude = ed_longitude.getText().toString();
                 String marital_status = sp_marital_status.getSelectedItem().toString();
                 String photo_url = "";
 
-                addStudentData(photo_url,str_fname,str_lname,str_age,str_iq,marital_status,gender,adm_score);
+                addStudentData(photo_url,str_fname,str_lname,str_age,str_iq,marital_status,gender,adm_score,str_latitude,str_longitude);
             }
         });
     }
 
-    private void addStudentData(String photo_url,String str_fname,String str_lname,String str_age,String str_iq,String marital_status,String gender,double adm_score) {
+    private void addStudentData(String photo_url,String str_fname,String str_lname,String str_age,
+                                String str_iq,String marital_status,String gender,double adm_score,String str_latitude,String str_longitude) {
 
         // url to post our data
         String url = "https://mwalimubiashara.com/tenakata/add_student.php";
@@ -231,6 +234,8 @@ public class AddStudent extends AppCompatActivity {
                 params.put("marital_status",marital_status);
                 params.put("gender",gender);
                 params.put("adm_score",""+adm_score);
+                params.put("str_latitude",""+str_latitude);
+                params.put("str_longitude",""+str_longitude);
 
                 return params;
             }
