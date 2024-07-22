@@ -27,15 +27,25 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class AddStudent extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -140,13 +150,12 @@ public class AddStudent extends AppCompatActivity {
                 if(location != null){
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
-//                    Toast.makeText(getApplicationContext(), "Location latitude is :"+latitude+" longitude is :"+longitude, Toast.LENGTH_SHORT).show();
+
                     ed_latitude.setText(""+latitude);
                     ed_longitude.setText(""+longitude);
                     String countryName = getCountryNameFromLocation(latitude, longitude);
                 if (countryName != null) {
-                    Toast.makeText(AddStudent.this, "Country: " + countryName, Toast.LENGTH_SHORT).show();
-                    Log.e("TAG", "Country is " + countryName);
+
                     tvCountry.setText("Country : "+countryName);
                 } else {
 
@@ -156,6 +165,78 @@ public class AddStudent extends AppCompatActivity {
                 }
             }
         });
+        btn_Add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String gender = sp_gender.getSelectedItem().toString();
+                String str_age = ed_age.getText().toString();
+                String str_iq = ed_iq.getText().toString();
+                String str_fname = ed_fname.getText().toString();
+                String str_lname = ed_lname.getText().toString();
+                String marital_status = sp_marital_status.getSelectedItem().toString();
+                String photo_url = "";
+
+                addStudentData(photo_url,str_fname,str_lname,str_age,str_iq,marital_status,gender,adm_score);
+            }
+        });
+    }
+
+    private void addStudentData(String photo_url,String str_fname,String str_lname,String str_age,String str_iq,String marital_status,String gender,double adm_score) {
+
+        // url to post our data
+        String url = "https://mwalimubiashara.com/tenakata/add_student.php";
+
+        RequestQueue queue = Volley.newRequestQueue(AddStudent.this);
+
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+//                progressBar.setVisibility(View.GONE);
+                Log.e("TAG", "RESPONSE IS " + response);
+
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+//                    isMpesaAdded = jsonObject.getBoolean("error");
+//                    JSONArray jsonArray =jsonObject.getJSONArray("data");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // method to handle errors.
+//                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(), "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("photo_url",photo_url);
+                params.put("str_fname",str_fname);
+                params.put("str_lname",str_lname);
+                params.put("str_age",str_age);
+                params.put("str_iq",str_iq);
+                params.put("marital_status",marital_status);
+                params.put("gender",gender);
+                params.put("adm_score",""+adm_score);
+
+                return params;
+            }
+        };
+        queue.add(request);
+//        Toast.makeText(AddActualActivity.this, "Id "+income_id+". Freq "+income_frequency+". Amnt "+income_amount, Toast.LENGTH_SHORT).show();
     }
 
     private String getCountryNameFromLocation(double latitude, double longitude) {
